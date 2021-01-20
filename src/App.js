@@ -1,7 +1,8 @@
+import {Auth} from "./pages";
 function App() {
   return (
     <div className="wrapper">
-      Hello, World!
+        <Auth />
     </div>
   );
 }
