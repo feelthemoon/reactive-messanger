@@ -1,0 +1,88 @@
+@import "../../styles/vars";
+.message{
+  display: flex;
+  align-items: flex-end;
+  margin-bottom: 15px;
+  &__content {
+    display: flex;
+    align-items: flex-end;
+  }
+  &__container{
+    display: flex;
+    flex-direction: column;
+    align-items: baseline;
+  }
+  &__read{
+    margin-bottom: 10px;
+    margin-left: 10px;
+  }
+  &__attachments{
+    display: flex;
+    align-self: flex-end;
+    margin-bottom: 5px;
+    &-item{
+      margin-right: 5px;
+      cursor: pointer;
+      img {
+        max-width: 45px;
+        max-height: 45px;
+        border-radius: 8px;
+      }
+    }
+  }
+  &__avatar{
+    max-width: 33px;
+    height: 33px;
+    width: 100%;
+    border-radius: 50%;
+    background-size: cover!important;
+    background-repeat: no-repeat!important;
+    background-position: center, center!important;
+    margin-right: 5px;
+    margin-bottom: 20px;
+  }
+  &__bubble{
+    background: $blue;
+    box-shadow: 0 5px 5px rgba(54, 116, 255, 0.2);
+    border-radius: 12px 12px 12px 0;
+    padding: 15px;
+    margin-bottom: 8px;
+    max-width: 440px;
+    word-break:break-all;
+  }
+  &__text{
+    color: #fff;
+    line-height: 20px;
+  }
+  &__date{
+    font-size: 12px;
+    opacity: .5;
+  }
+  $self: &;
+  &--isme{
+    display: flex;
+    flex-direction: row-reverse;
+    #{$self}__content{
+      flex-direction: row-reverse;
+      align-items: flex-end;
+    }
+    #{$self}__date{
+      margin-right: 10px;
+      align-self: flex-end;
+    }
+    #{$self}__bubble{
+      background-color: #fff;
+      border: 1px solid #ececec;
+      box-shadow: 0 4px 4px rgba(0, 0, 0 ,.03);
+      border-radius: 12px 12px 0 12px;
+      margin-right: 5px;
+    }
+    #{$self}__text{
+      color: $black;
+    }
+    #{$self}__read{
+      margin-left: 0;
+      margin-right: 10px;
+    }
+  }
+}
