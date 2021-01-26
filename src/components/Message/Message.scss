@@ -7,18 +7,13 @@
     display: flex;
     align-items: flex-end;
   }
-  &__container{
-    display: flex;
-    flex-direction: column;
-    align-items: baseline;
-  }
   &__read{
     margin-bottom: 10px;
     margin-left: 10px;
   }
   &__attachments{
     display: flex;
-    align-self: flex-end;
+    flex-direction: row-reverse;
     margin-bottom: 5px;
     &-item{
       margin-right: 5px;
@@ -59,6 +54,56 @@
     opacity: .5;
   }
   $self: &;
+  &--is-audio{
+    audio{
+      display: none;
+    }
+    #{$self}__bubble{
+      width: 290px;
+      position: relative;
+      overflow: hidden;
+    }
+    #{$self}__audio{
+      &-info{
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        position: relative;
+      }
+      &-btn{
+        button{
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background-color: #0f3997;
+          img{
+            width: 15px;
+            height: 15px;
+          }
+        }
+      }
+      &-duration{
+        color: #fff;
+        font-weight: 600;
+        opacity: 0.5;
+        font-size: 14px;
+      }
+      &-progress{
+        background-color: #418fff;
+        position: absolute;
+        transition: width .3s linear;
+        height: 100%;
+        left: 0;
+        top: 0;
+      }
+    }
+  }
   &--isme{
     display: flex;
     flex-direction: row-reverse;
@@ -68,7 +113,8 @@
     }
     #{$self}__date{
       margin-right: 10px;
-      align-self: flex-end;
+      display: flex;
+      flex-direction: row-reverse;
     }
     #{$self}__bubble{
       background-color: #fff;
@@ -83,6 +129,18 @@
     #{$self}__read{
       margin-left: 0;
       margin-right: 10px;
+    }
+  }
+  &--image{
+    #{$self}__attachments{
+      &-item{
+        img{
+          max-width: 150px;
+          max-height: 150px;
+          width: 150px;
+          height: 150px;
+        }
+      }
     }
   }
   &--is-typing{
