@@ -1,7 +1,7 @@
 import tinycolor from "tinycolor2";
 const generateAvatar = (hash) => {
     const [r, g, b] = hash
-        .slice(0, 3)
+        .slice(hash.length-3, hash.length)
         .split("")
         .map(char => char.charCodeAt(0) > 255 ? 255 : char.charCodeAt(0));
     return {

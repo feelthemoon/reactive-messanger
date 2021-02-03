@@ -5,7 +5,6 @@ import "./Avatar.scss";
 const Avatar = ({user}) => {
     if (!user.avatar){
         const {color, colorLighten} = generateAvatar(user._id);
-        console.log(color)
         const firstNameChar = user.username.charAt(0);
         return (
             <div style={{background: `linear-gradient(150deg, ${color} -10%, ${colorLighten} 96.52%`}} className="avatar--empty">

@@ -1,0 +1,48 @@
+@import "src/styles/vars";
+
+.typo{
+  position: relative;
+  &__smiles,
+  &__actions{
+    position: absolute;
+  }
+  &__smiles{
+    top: 35%;
+    left: 2%;
+    z-index: 100;
+    transform: translateY(-50%);
+    svg{
+      width: 18px;
+      height: 18px;
+      fill: #adadad;
+      transition: fill .2s linear;
+      &:hover {
+        fill: $black;
+        transition: fill .2s linear;
+      }
+    }
+  }
+  &__actions{
+    left: 92%;
+    top: 40%;
+    z-index: 100;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    span{
+      &:nth-child(2){
+        margin: 0 8px;
+      }
+      svg{
+        width: 18px;
+        height: 18px;
+        fill: #adadad;
+        transition: all .2s linear;
+        &:hover {
+          fill: $black;
+          transition: all .2s linear;
+        }
+      }
+    }
+  }
+}

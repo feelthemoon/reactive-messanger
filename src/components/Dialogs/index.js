@@ -1,21 +1,29 @@
 import React from 'react';
-
+import orderBy from "lodash/orderBy";
 import {DialogItem} from "../index";
-import "./Dialogs.scss";
+import { Input } from 'antd';
 
-const Dialogs = ({items, userId}) => {
+const { Search } = Input;
+const Dialogs = ({items, userId, onSearch, inputValue }) => {
     return(
         <div className="dialogs">
+            <div className="chat__sidebar-search">
+                <Search
+                    placeholder="Поиск среди контактов"
+                    onChange={onSearch}
+                    value={inputValue}
+                    enterButton
+                />
+            </div>
             {
-               items.sort(function(a, b) {
-                   return b.lastMessage.created_at - a.lastMessage.created_at
-               }).map(item => (
+                orderBy(items, ["created_at"], ["desc", "desc"])
+               .map(item => (
                        <DialogItem
-                           user={item.lastMessage.user}
-                           message={item.lastMessage}
-                           unreadCount={999}
+                           user={item.user}
+                           message={item}
+                           unreadCount={9}
                            key={item._id}
-                           isMe={item.lastMessage.user._id === userId}
+                           isMe={item.user._id === userId}
                        />
                        )
                )
