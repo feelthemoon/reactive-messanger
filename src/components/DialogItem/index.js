@@ -10,9 +10,14 @@ const getMessageTime = (createdAt) => {
     createdAt = new Date(createdAt);
     return isToday(createdAt) ? format(createdAt, "HH:mm") : format(createdAt, "dd.MM.yyyy");
 }
-const DialogItem = ({user, message, unreadCount, isMe}) => {
+const DialogItem = ({_id, user, unreadCount, created_at, text, isMe, onSelect}) => {
     return(
-        <div className={classNames("dialogs__item", {"dialogs__item--online": user?.isOnline})}>
+        <div
+            className={classNames("dialogs__item", {
+                "dialogs__item--online": user?.isOnline
+            })}
+            onClick={onSelect.bind(this, _id)}
+        >
             <div className="dialogs__item-avatar" >
                 <Avatar user={user}/>
             </div>
@@ -20,12 +25,12 @@ const DialogItem = ({user, message, unreadCount, isMe}) => {
                 <div className="dialogs__item-top">
                     <b>{user.username}</b>
                     <span>
-                        {getMessageTime(message.created_at)}
+                        {getMessageTime(created_at)}
                     </span>
                 </div>
                 <div className="dialogs__item-bottom">
                     <p>
-                        {message.text}
+                        {text}
                     </p>
                     <span>
                         {isMe && <MessageStatus isRead={true}/>}

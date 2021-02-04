@@ -1,32 +1,34 @@
 import React from 'react';
 import orderBy from "lodash/orderBy";
-import {DialogItem} from "../index";
-import { Input } from 'antd';
+import {Empty, Input} from 'antd';
+import {SearchOutlined} from "@ant-design/icons";
 
-const { Search } = Input;
-const Dialogs = ({items, userId, onSearch, inputValue }) => {
+import {DialogItem} from "../index";
+
+
+const Dialogs = ({ items, userId, onSearch, inputValue, onSelectDialog }) => {
     return(
         <div className="dialogs">
             <div className="chat__sidebar-search">
-                <Search
+                <Input
                     placeholder="Поиск среди контактов"
                     onChange={onSearch}
                     value={inputValue}
-                    enterButton
+                    suffix={<SearchOutlined />}
                 />
             </div>
             {
+                items.length ?
                 orderBy(items, ["created_at"], ["desc", "desc"])
                .map(item => (
                        <DialogItem
-                           user={item.user}
-                           message={item}
-                           unreadCount={9}
                            key={item._id}
                            isMe={item.user._id === userId}
+                           onSelect={onSelectDialog}
+                           {...item}
                        />
                        )
-               )
+               ) : <Empty description="Не могу найти..."/>
             }
         </div>
     )

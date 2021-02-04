@@ -8,3 +8,4 @@ export {default as UserStatus} from "./UserStatus";
 export {default as Dialogs} from "./Dialogs";
 export {default as Avatar} from "./Avatar";
 export {default as TypoMessage} from "./TypoMessage";
+export {default as Messages} from "./Messages";

@@ -10,6 +10,7 @@ import {convertCurrentTime} from "../../utils/helpers";
 import Time from "../Time";
 import "./Message.scss";
 import MessageStatus from "../MessageStatus";
+import {Avatar} from "../index";
 
 const MessageAudio = ({audio}) => {
     const [isPlaying, setIsPlaying] = useState(false);
@@ -81,7 +82,9 @@ const Message = (
             "message--image": attachments?.length === 1,
             "message--is-audio": audio
         })}>
-            <div className="message__avatar" style={{background:`url(${avatar})`}} />
+            <div className="message__avatar" >
+                <Avatar user={user} />
+            </div>
             <div className="message__container">
                 <div className="message__content">
                     {(audio || text || isTyping) &&
