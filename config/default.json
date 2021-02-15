@@ -1,0 +1,4 @@
+{
+    "dbUri": "mongodb+srv://vladislav:MegaPolis01@connect.ubsiz.mongodb.net/chat?retryWrites=true&w=majority",
+    "port": 5001
+}
